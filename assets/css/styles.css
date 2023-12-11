@@ -1,0 +1,547 @@
+*{
+    box-sizing: border-box;
+}
+/* Đây là màu chủ đạo của trang web, nên sẽ xài đi xài lại và chúng ta dùng biến toàn cục */
+:root{
+    --primary-color: #0F1B4C;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    font-size: 1.6rem;
+    font-family: 'Poppins',sans-serif;
+}
+a{
+    text-decoration: none;
+}
+/* Class btn này sẽ dùng chung cho các nút khác tương tự */
+.btn{
+    display: inline-block;
+    /* thẻ a là thẻ inline vậy ta sẽ chỉnh thành inline block để có thể css cho nó được */
+    min-width: 98px;
+    /* để min width nếu sau này nhiều chữ thì nút sẽ tự tăng kích thước */
+    padding: 18px 16px;
+    background: var(--primary-color);
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 1.4rem;
+    text-align: center;
+    color: #FFFFFF;
+}
+.btn:hover{
+    opacity: 0.9;
+}
+/* Dàn logo vs navigation+ action nằm ngang lần 1 */
+.navbar{
+    display: flex;
+    /* muốn cho 3 thành phần gồm logo action navigation nằm ngang phải cho thẻ cha của nó flex */
+    align-items: center;
+    /* căn theo chiều ngang của flex */
+    padding-top: 38px;
+    /* ở đây nếu dùng margin sẽ dính margin colapse nên là sẽ ko margin được nên dùng padding ở trường hợp này */
+}
+.header{
+    /* Header để position là relative để cho hình heroimg trạng thái là absolute */
+    position: relative;
+    height: 100vh;
+    /* chiêm hết chiều của màn hình là 100 viewport */
+    background-color: #E6F0FF;
+}
+.content{
+    width: 1110px;
+    /* Max width = 100 -48px để cách 2 bên lề 1 khoảng = 24px nếu như trình duyệt bị thu nhỏ đi và cũng ko để sát lề nếu dùng maxwidth 100%
+    nếu có thu nhỏ thì cũng sẽ cách lề 1 khoảng là 100 - 48*/
+    max-width: calc(100% - 48px);
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-left, margin right auto là căn giữa */
+    
+}
+/* Tất cả thẻ ul nằm trong class có tên là navbar, cho các item của navigation nằm ngang*/
+.navbar ul{
+    display: flex;
+    margin-left: 50px;
+}
+.navbar .actions{
+    margin-left: auto;
+    /* cho 2 thành phẩn sign in sign up sang bên phải */
+}
+
+.navbar ul a{
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 21px;
+    color: #4F5361;
+    padding: 8px 16px;
+}
+.navbar ul a:hover{
+    text-decoration: underline;
+}
+.navbar .action-link{
+    font-weight: 500;
+    font-size: 14px; 
+    color: var(--primary-color);
+}
+.navbar .action-btn{
+    padding: 13px 16px;
+    margin-left: 18px;
+    border-radius: 8px;
+}
+.hero {
+    margin-top: 130px;
+}
+/* Tính độ rộng của phần mô tả như sau: lấy cái giá trị gốc của mô tả trong figma /1110px nhân vs 100% */
+.hero .info{
+    width: 51%;
+    /* không nên dùng giá trị tuyệt đối, khối info rộng 591px
+    content của chúng ta là 1110px -> 559/1110 *100% */
+}
+.hero .sub-title{
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    color: #687691;
+}
+.hero .title{
+    margin-top: 8px;
+    font-weight: 700;
+    font-size: 6.2rem;
+    line-height: 1.19;
+    /* or 119% */
+    color: #000336;
+}
+.hero .desc{
+    margin-top: 30px;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 1.78;
+    /* or 178% */
+    color: #5A6473;
+}
+ .action-cal{
+    margin-top: 40px;
+    min-width: 170px;
+}
+.hero-img{
+    position: absolute;
+    bottom: 0;
+    right: calc((100vw - 1110px) / 2 - 100px);
+    /* cho cái hình chạy vào khi thu nhỏ thẳng bằng cạnh của sign up và chìa ra là 100px*/
+}
+.client{
+   margin-top: 122px; 
+}
+.client .row{
+    display: flex;
+    justify-content: space-between;
+}
+.client .desc{
+    margin-top: 23px;
+    font-weight: 500;
+font-size: 1.6rem;
+line-height: 1.25;
+/* identical to box height, or 125% */
+color: #7D8589;
+}
+.client .logo{
+    display: flex;
+    margin-top: 97px;
+    justify-content: space-around;
+    align-items: center;
+}
+.client .logo img:hover{
+    box-shadow: 0px 10px 20px rgb(0 0 0 / 10%);
+}
+.client .logo img{
+    height: 90px;
+    padding: 28px 28px;
+    border-radius: 10px;
+}
+/* ==============Phần guides============= */
+.guides{
+    margin-top: 200px;
+}
+.guides .sub-title{
+    position: relative;
+    font-weight: 600;
+font-size: 3.5rem;
+line-height: 1;
+text-align: center;
+color: #000339;
+}
+/* Tạo dấu gạch phía trên thẻ tiêu đề h2 */
+.guides .sub-title::before{
+    /* 50% của chính nó => thành ra giữa */
+    transform: translateX(-50%);
+    top: -10px;
+    /* Chạy 50% của thẻ cha vào giữa */
+    left: 50%;
+    position: absolute;
+    content: "";
+    width: 41px;
+    height: 4px;
+    background: #000339;
+    border-radius: 12px
+}
+.guides .desc{
+    width: 459px;
+    max-width: 100%;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.88;
+    text-align: center;
+    margin: 20px auto 0;
+    color: #5A6473;
+}
+.list-guild{
+    display: flex;
+    margin-top: 70px;
+    justify-content: center;
+}
+.list-guild .guild-item{
+ margin: 0 70px ;
+ text-align: center
+ ;
+}
+.list-guild .title{
+    font-weight: 500;
+font-size: 2rem;
+line-height: 1.1;
+/* identical to box height, or 110% */
+
+text-align: center;
+
+color: #3B3C45;
+    margin-top: 26px;
+}
+.list-guild .link{
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+font-size: 1.4rem;
+color: #0689FF;
+}
+.list-guild .arrow{
+    margin-left: 4px;
+}
+.guild-btn{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+.guild-btn .btn{
+    min-width: 170px;
+}
+/* Phần features */
+.feature{
+    margin-top: 120px;
+    padding: 110px 0;
+    background: #F5FAFE;
+}
+.feature .sub-title{
+font-weight: 600;
+font-size: 3.5rem;
+line-height: 1;
+color: #000339;
+}
+.feature .row{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.feature .desc{
+    font-weight: 400;
+font-size: 1.6rem;
+
+
+color: #5A6473;
+}
+.feature .link{
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: #0689FF;
+}
+.feature .list{
+    margin-top: 68px;
+    display: flex;
+    /* tạo khoảng cách giữa các item */
+    gap: 30px;
+}
+/* ảnh gọn hơn */
+.feature .list .thumb{
+    width: 100%;
+    /* giữ đúng tỉ lệ và lấp đầy khung hình */
+    height: 227px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.feature .item{
+    background: #fff;
+    flex: 1;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.feature .item .body{
+padding: 17px 20px 24px 
+}
+.feature .item .title{
+    font-weight: 600;
+font-size: 2rem;
+line-height: 100%;
+color: #000339;
+/* Khi nội dung dài sẽ co lại thành 2 dòng và hiện dấu ... */
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+}
+.feature .item .desc{
+    margin-top: 11px;
+    font-style: normal;
+font-weight: 500;
+font-size: 1.4rem;
+line-height: 21px;
+color: #A3A6AB;
+/* bẻ dòng khi dài */
+word-break: break-all;
+}
+.feature .item .info{
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+}
+.feature .item .label{
+    font-weight: 500;
+font-size: 1.4rem;
+letter-spacing: 0.01em;
+
+color: #4D4D52;
+    margin-left: 8px;
+}.feature .item .icon{
+    margin-left: 23px;
+}
+.feature .item .icon:first-child{
+    margin-left: 0px;
+}
+/* ===== Phần stats ========= */
+.stats{
+    margin-top: 75px;
+    padding: 50px 0;
+}
+.stats .row{
+    display: flex;
+}
+ .stats .content{
+    width: 1048px;
+ }
+ .stats .img-block, .stats .info{
+    width: 50%;
+ }
+ .stats .img-block{
+    position: relative;
+ }
+ .stats .img-block .image{
+    display: block;
+    margin-left: auto;
+    width: 400px;
+    height: 460px;
+    object-fit: cover;
+    border-radius: 12px;
+ }
+ .stats .info{
+    padding: 165px 0 0 79px;
+ }
+ .stats .info .sub-title{
+    position: relative;
+    width: 269px;
+font-weight: 600;
+font-size: 3.5rem;
+line-height: 1.29;
+color: #000339;
+ }
+ .stats .info .sub-title::before{
+    position: absolute;
+    top: -10px;
+    left: 0;
+    content: "";
+    display: block;
+    width: 41px;
+    height: 4px;
+    background: #000339;
+    border-radius: 12px;
+ }
+ .stats .info .desc{
+    margin-top: 20px;
+    width: 309px;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 30px;
+    color: #5A6473;
+ }
+ .stats-trend{
+    position: absolute;
+    padding: 45px 22px 40px;
+    top: 0;
+    left: 0;
+    width: 239px;
+    border-radius: 0 0 12px 12px;
+    background: #FFFFFF;
+ }
+ .stats-trend .value{
+font-weight: 700;
+font-size: 2.6rem;
+letter-spacing: 0.01em;
+color: #000339;
+ }
+ .stats-trend .desc{
+margin-top: 8px;
+font-weight: 400;
+font-size: 1.2rem;
+line-height: 150%;
+color: #A7A7A7;
+}
+ .stats-trend .icon{
+    margin-left: auto;
+ }
+ .stats-trend .severate{
+    margin-top: 25px;
+    height: 1.2px;
+    background: #E9E9E9;
+ }
+
+.stats .avatar-block{
+    display: flex;
+    /* Căn chỉnh khoảng cách đối tượng khi dùng flex = margin */
+    gap: 16px 14px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+.stats .avatar-group{
+    display: flex;
+}
+.stats .avatar{
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: -3px;
+}
+.stats .avatar:first-child{
+    margin-left: 0;
+}
+.stats .row-qt{
+    margin-top: 110px;
+    justify-content: space-between;
+    padding: 0 32px;
+}
+
+.stats .row-qt strong{
+font-weight: 600;
+font-size: 6.4rem;
+line-height: 64px;
+/* identical to box height, or 100% */
+color: #000000;
+}
+.stats .row-qt .desc{
+font-weight: 500;
+font-size: 1.8rem;
+line-height: 27px;
+color: #7B8087;
+}
+.subscribe{
+    margin-top: 90px;
+}
+.subscribe .body{
+    position: relative;
+    display: flex;
+    align-items: center;
+height: 370px;
+background: #063183;
+border-radius: 20px;
+}
+.subscribe .info{
+ padding: 0 80px;
+
+}
+.subscribe .sub-title{
+font-weight: 600;
+font-size: 3.5rem;
+line-height: 35px;
+/* identical to box height, or 100% */
+color: #FFFFFF;
+}
+.subscribe .desc{
+font-weight: 400;
+font-size: 1.6rem;
+line-height: 30px;
+color: #FFFFFF;
+opacity: 0.75;
+margin-top: 15px;
+}
+.subscribe .btn{
+    margin-top: 20px;
+    min-width: 151px;
+    background: #FFFFFF;
+    color: #002366;
+    border-radius: 12px;}
+.subscribe .image{
+    position: absolute;
+    right: 221px;
+    bottom: 0;
+}
+.footer{
+    margin-top: 55px;
+    padding: 50px 0 58px;
+}
+.footer .row-top{
+    display: flex;
+    gap: 185px;
+}
+.footer .heading{
+    font-style: normal;
+font-weight: 700;
+font-size: 2rem;
+line-height: 24px;
+/* identical to box height */
+color: #1C1C1D;
+}
+
+.footer .list,
+.footer .desc{
+    margin-top: 42px;
+}
+.footer .desc, .footer .item a{
+font-weight: 400;
+font-size: 1.6rem;
+line-height: 24px;
+/* identical to box height */
+color: #7A7A7E;
+white-space: nowrap;
+}
+.footer .item{
+    margin-top: 18px;
+}
+.footer .desc{
+    white-space: normal;
+    line-height: 1.75;
+}
+.footer .social-link{
+    padding: 0 4px;
+}
+.footer .row-bottom{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    margin-top: 81px;
+}
+.footer .copyright{
+   
+font-weight: 400;
+font-size: 1.4rem;
+line-height: 21px;
+color: #C2C2C2;
+}
